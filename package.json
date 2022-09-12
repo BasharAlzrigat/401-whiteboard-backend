@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=test jest",
     "start":"NODE_ENV=test node index.js"
   },
   "repository": {
@@ -18,6 +18,10 @@
     "url": "https://github.com/BasharAlzrigat/401-whiteboard-backend/issues"
   },
   "homepage": "https://github.com/BasharAlzrigat/401-whiteboard-backend#readme",
+  "devDependencies": {
+    "jest": "^27.3.1",
+    "supertest": "^6.1.6"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
