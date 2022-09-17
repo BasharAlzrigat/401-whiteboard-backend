@@ -16,7 +16,7 @@ beforeAll(async () => {
   });
 
 
-  describe('Web server', () => {
+  describe('Web server & posts requests test', () => {
 
     test('Should respond with 404 status on a bad route', async () => {
 
@@ -73,3 +73,46 @@ beforeAll(async () => {
         expect(response.status).toBe(204);
     });
 });
+
+describe('comments requests test', () => {
+  test('can add a post', async () => {
+
+    const response = await mockRequest.post('/comments').send({
+      title: 'food',
+      content: 'Shawerma and Zinger'
+    });
+
+    expect(response.status).toBe(201);
+
+  });
+
+
+test('can get all the comments', async () => {
+
+    const response = await mockRequest.get('/comments');
+
+    expect(response.status).toBe(200);
+
+  });
+
+  it('can get a record for a comments', async () => {
+
+    const response = await mockRequest.get('/comments/1');
+
+    expect(response.status).toBe(200);
+});
+
+test('can update a record for a comments', async () => {
+
+    const response = await mockRequest.put('/comments/1');
+
+    expect(response.status).toBe(201);
+});
+
+test('can delete a record for a comments', async () => {
+
+    const response = await mockRequest.delete('/comments/1');
+
+    expect(response.status).toBe(204);
+});
+})
