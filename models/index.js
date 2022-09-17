@@ -24,14 +24,18 @@ let sequelizeOptions = process.env.NODE_ENV === 'production' ? {
 let sequelize = new Sequelize(POSTGRES_URI, sequelizeOptions);
 
 const post = require('./post.model');
+const comments = require('./comments.model')
 
 const postModel=post(sequelize,DataTypes);
+const commentsModel=comments(sequelize,DataTypes);
 
 const Collection=require('./collection-class');
 
 const postCollection=new Collection(postModel)
+const commentsCollection=new Collection(commentsModel)
 
 module.exports = {
   db: sequelize,
   postCollection,
+  commentsCollection,
 };
