@@ -17,9 +17,11 @@ userRoutes.post('/signIn', signIn)
   }
     async function signIn(req,res){
         let basicHeaderParts = req.headers.authorization.split(' ');
+        console.log("basicHeaderParts",basicHeaderParts);
         let decodedString = base64.decode(basicHeaderParts[1]);
+        console.log("decodedString",decodedString);
         let [username,password]=decodedString.split(':');
-
+        console.log("username,password",username,password);
         try {
             const userClient = await userModel.findOne({ where: { username: username } });
             const valid = await bcrypt.compare(password, userClient.password);
