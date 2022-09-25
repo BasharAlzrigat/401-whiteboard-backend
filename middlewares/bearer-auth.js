@@ -4,9 +4,7 @@ const { userModel } = require('../models/index');
 
 module.exports = async (req, res, next) => {
 
-  
-  console.log("@@@@@@@@@@@@@@@@@@@",req.headers);
-  try {
+    try {
     if (!req.headers.authorization) { _authError() }
     const token = req.headers.authorization.split(' ').pop();
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!", token);
