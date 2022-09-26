@@ -29,11 +29,11 @@ let sequelize = new Sequelize(POSTGRES_URI, sequelizeOptions);
 
 const post = require("./post.model");
 const comments = require("./comments.model");
-const users = require("./user.model");
+const user = require("./user.model");
 
 const postModel = post(sequelize, DataTypes);
 const commentsModel = comments(sequelize, DataTypes);
-const userModel = users(sequelize, DataTypes);
+const userModel = user(sequelize, DataTypes);
 
 const Collection = require("./collection-class");
 
