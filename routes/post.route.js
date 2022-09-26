@@ -2,13 +2,15 @@ const express=require('express')
 const router=express.Router();
 const bearerAuth = require("../middlewares/bearer-auth")
 const{postCollection}=require('../models/index')
+const permissions = require('../middlewares/acl')
+
 
 
 router.post('/post', bearerAuth, createPost);
 router.get('/post', bearerAuth, getPost);
 router.get('/post/:id', bearerAuth, getOnePost);
-router.put('/post/:id', bearerAuth, updatePost);
-router.delete('/post/:id', bearerAuth, deletePost);
+router.put('/post/:id', bearerAuth, permissions('update '), updatePost);
+router.delete('/post/:id', bearerAuth, permissions('delete '), deletePost);
 
 
 async function createPost(req,res){
