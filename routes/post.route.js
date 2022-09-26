@@ -9,8 +9,8 @@ const permissions = require('../middlewares/acl')
 router.post('/post', bearerAuth, createPost);
 router.get('/post', bearerAuth, getPost);
 router.get('/post/:id', bearerAuth, getOnePost);
-router.put('/post/:id', bearerAuth, permissions('update '), updatePost);
-router.delete('/post/:id', bearerAuth, permissions('delete '), deletePost);
+router.put('/post/:id', bearerAuth, permissions('update'), updatePost);
+router.delete('/post/:id', bearerAuth, permissions('delete'), deletePost);
 
 
 async function createPost(req,res){
